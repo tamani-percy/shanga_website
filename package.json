@@ -1,0 +1,50 @@
+{
+  "name": "fundalytics-web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@lottiefiles/dotlottie-vue": "^0.4.17",
+    "@primevue/themes": "^4.1.1",
+    "@vueuse/motion": "^2.2.6",
+    "autoprefixer": "^10.4.20",
+    "chart.js": "^4.4.5",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "gsap": "^3.12.5",
+    "gsap-trial": "^3.12.5",
+    "interact": "^0.0.3",
+    "particles.vue3": "^2.12.0",
+    "portal-vue": "^3.0.0",
+    "postcss": "^8.4.47",
+    "primevue": "^4.1.1",
+    "swiper": "^11.1.14",
+    "three": "^0.169.0",
+    "underscore": "^1.13.7",
+    "vue": "^3.5.12",
+    "vue-chartjs": "^5.3.1",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^22.7.6",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/tsconfig": "^0.5.1",
+    "npm-run-all2": "^6.2.3",
+    "tailwindcss": "^3.4.14",
+    "typescript": "~5.5.4",
+    "vite": "^5.4.8",
+    "vue-tsc": "^2.1.6"
+  }
+}

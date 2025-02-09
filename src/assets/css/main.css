@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Roboto Slab";
+    src: url("../fonts/roboto_slab/RobotoSlab-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/open_sans/OpenSans-VariableFont_wdth,wght.ttf");
+}
+
+@layer utilities {
+    .paused {
+        animation-play-state: paused;
+    }
+}
