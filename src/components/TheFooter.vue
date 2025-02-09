@@ -12,7 +12,7 @@ const primaryColor = MyPreset.semantic.primary[200]
       <div class="text-center flex flex-col lg:text-justify">
         <h1 class="text-xl font-bold">Company</h1>
         <div class="mt-10 flex-col flex">
-          <router-link to="#">About Us</router-link>
+          <router-link to="/about_us">About Us</router-link>
           <router-link to="#" class="my-3">Terms of Use</router-link>
           <router-link to="#" class="lg:mb-0">Privacy Policy</router-link>
         </div>

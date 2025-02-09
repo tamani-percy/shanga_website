@@ -11,6 +11,7 @@ const selectedTopics = ref([
   {name: 'General Information', id: '1'},
   {name: 'Investments', id: '2'},
 ]);
+
 </script>
 
 <template>

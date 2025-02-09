@@ -45,7 +45,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-[800px] w-full mt-[5rem] flex justify-center gap-4 relative"
+  <div class="min-h-[800px] w-full flex justify-center gap-4 relative"
        :style="{ background: primaryColor }">
     <div class="justify-center flex flex-col">
       <div class="text-center lg:w-[940px] p-5 lg:p-0">

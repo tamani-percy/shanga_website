@@ -3,6 +3,7 @@ import HowToGetStarted from "@/components/HowToGetStarted.vue";
 import LandingText from "@/components/Homepage/LandingText.vue";
 import HowItWorks from "@/components/HowItWorks.vue";
 import Safety from "@/components/Homepage/Safety.vue";
+
 </script>
 
 <template>
