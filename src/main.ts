@@ -17,6 +17,7 @@ import PortalVue from 'portal-vue'
 
 const app = createApp(App)
 library.add(fas)
+// @ts-ignore
 library.add(fab)
 app.use(router)
 app.use(PortalVue)

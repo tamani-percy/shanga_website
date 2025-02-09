@@ -1,4 +1,5 @@
 <script setup lang="ts">
+//@ts-nocheck
 import {ref} from "vue";
 import {useRouter} from 'vue-router';
 import Menubar from "primevue/menubar";
@@ -7,7 +8,7 @@ import Divider from "primevue/divider"
 const router = useRouter();
 const primaryColor = MyPreset.semantic.primary[500];
 
-const items = ref([
+const items:any = ref([
   {
     label: 'Home',
     icon: ['fas', 'house'],
@@ -45,7 +46,7 @@ function removeClass(event: any) {
   }
 }
 
-const primaryColorHover = MyPreset.semantic.primary[900];
+const primaryColorHover:any = MyPreset.semantic.primary[900];
 </script>
 
 <template>

@@ -25,11 +25,13 @@ gsap.registerPlugin(ScrollTrigger);
 export default {
   name: "LandingPage",
   mounted() {
-    gsap.to(this.$refs.gettingStartedContainer, {
+    const container:any = this.$refs.gettingStartedContainer
+
+    gsap.to(container, {
       scale: 0.9, // Scale down to 50%
       ease: "power1.out",
       scrollTrigger: {
-        trigger: this.$refs.gettingStartedContainer,
+        trigger: container,
         start: "top top", // Start scaling as the component reaches the top of the viewport
         scrub: 1,         // Smooth scaling while scrolling
       },

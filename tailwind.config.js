@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+/** eslint-env node */
+export default {
     darkMode: ["class"],
     content: [
         './pages/**/*.{ts,tsx,vue}',
@@ -27,8 +28,8 @@ module.exports = {
                 '51%, 100%': {opacity: '0'},
             },
             'loop-scroll': {
-                from: { transform: 'translateX(0)' },
-                to: { transform: 'translateX(-100%)' },
+                from: {transform: 'translateX(0)'},
+                to: {transform: 'translateX(-100%)'},
             }
         },
         fontFamily: {

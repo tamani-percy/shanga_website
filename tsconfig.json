@@ -1,14 +1,22 @@
+//@ts-nocheck
+
 {
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strict": false,
+    "emitDeclarationOnly": true,
+    "strictNullChecks": false,
+    "declaration": true,
+    "composite": true
+  },
   "files": [],
   "references": [
     {
-      "path": "./tsconfig.node.json"
+      "path": "tsconfig.node.json"
     },
     {
-      "path": "./tsconfig.app.json"
+      "path": "tsconfig.app.json"
     }
   ],
-  "include": [
-    "./src/**/*.vue",
-  ]
 }

@@ -11,22 +11,22 @@ const router = createRouter({
         {
             path: '',
             name: 'homepage',
-            component: AppSkeleton,
+            component: () => import("@/views/AppSkeleton.vue"),
             children: [
                 {
                     path: '',
                     name: 'homepage',
-                    component: Homepage,
+                    component: () => import("@/components/Homepage/Homepage.vue"),
                 },
                 {
                     path: '/contact_us',
                     name: 'contact_us',
-                    component: ContactUs
+                    component: () => import("@/components/ContactUs/ContactUs.vue"),
                 },
                 {
                     path: '/about_us',
                     name: 'about_us',
-                    component: AboutUs
+                    component: () => import("@/components/AboutUs/AboutUs.vue"),
                 }
             ]
         }
