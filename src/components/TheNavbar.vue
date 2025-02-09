@@ -6,6 +6,8 @@ import Menubar from "primevue/menubar";
 import { MyPreset } from "@/PrimevuePresets.ts";
 
 
+const primaryColor:any = MyPreset.semantic.primary[500];
+
 const items:any = ref([
   {
     label: "Home",
