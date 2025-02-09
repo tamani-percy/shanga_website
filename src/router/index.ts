@@ -10,7 +10,7 @@ const router = createRouter({
     routes: [
         {
             path: '',
-            name: 'homepage',
+            name: 'skeleton',
             component: () => import("@/views/AppSkeleton.vue"),
             children: [
                 {
