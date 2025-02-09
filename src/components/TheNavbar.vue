@@ -1,10 +1,10 @@
+
 <script setup lang="ts">
+// @ts-nocheck
 import { ref, onMounted, onUnmounted } from "vue";
 import Menubar from "primevue/menubar";
 import { MyPreset } from "@/PrimevuePresets.ts";
 
-// @ts-ignore
-const primaryColor:any = MyPreset.semantic.primary[500];
 
 const items:any = ref([
   {
@@ -75,7 +75,7 @@ onUnmounted(() => {
       <template #item="{ item, props }">
         <router-link :to="item.route" v-slot="{ href, navigate }" custom>
           <a v-ripple :href="href" v-bind="props.action" @click="navigate" @mouseenter="addClass"
-             @mouseleave="removeClass" :style="{hover:primaryColorHover}">
+             @mouseleave="removeClass">
             <font-awesome-icon class="text-md fa-icon" :icon="item.icon"/> &nbsp;
             <span>{{ item.label }}</span>
           </a>
