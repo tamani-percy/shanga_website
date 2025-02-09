@@ -4,7 +4,6 @@ import {ref} from "vue";
 import {useRouter} from 'vue-router';
 import Menubar from "primevue/menubar";
 import {MyPreset} from "@/PrimevuePresets.ts";
-import Divider from "primevue/divider"
 const router = useRouter();
 const primaryColor = MyPreset.semantic.primary[500];
 
