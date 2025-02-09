@@ -49,7 +49,7 @@ const primaryColorHover:any = MyPreset.semantic.primary[900];
 </script>
 
 <template>
-  <div class=" grid w-full justify-center fixed parent_menubar">
+  <div class="fixed parent_menubar">
     <Menubar :model="items">
       <template #start>
         <a href="/" id="shanga_logo">
