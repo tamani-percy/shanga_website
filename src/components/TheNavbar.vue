@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { useRouter } from "vue-router";
 import Menubar from "primevue/menubar";
 import { MyPreset } from "@/PrimevuePresets.ts";
 
-const primaryColor = MyPreset.semantic.primary[500];
+// @ts-ignore
+const primaryColor:any = MyPreset.semantic.primary[500];
 
 const items:any = ref([
   {
