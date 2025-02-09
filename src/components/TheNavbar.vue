@@ -49,7 +49,6 @@ const primaryColorHover:any = MyPreset.semantic.primary[900];
 </script>
 
 <template>
-  <div class="fixed parent_menubar">
     <Menubar :model="items">
       <template #start>
         <a href="/" id="shanga_logo">
@@ -83,15 +82,11 @@ const primaryColorHover:any = MyPreset.semantic.primary[900];
       </template>
     </Menubar>
 
-  </div>
 </template>
 
 
 
 <style>
-.parent_menubar {
-  z-index: 1000 !important;
-  background-color: #f8fafc;
-}
+
 
 </style>
