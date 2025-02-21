@@ -1,7 +1,6 @@
 <script setup>
 
 import {MyPreset} from "@/PrimevuePresets.ts";
-import Divider from "primevue/divider"
 
 const primaryColor = MyPreset.semantic.primary[200]
 </script>
@@ -22,12 +21,6 @@ const primaryColor = MyPreset.semantic.primary[200]
         <router-link to="#" class="mb-3 mt-10">Pricing</router-link>
       </div>
       <div class="text-center flex flex-col lg:text-justify">
-<!--        <h1 class="text-xl font-bold ">Contact Us</h1>-->
-<!--        <p class="mt-10">customer@investshanga.com</p>-->
-<!--        <p>-->
-<!--          +260211436532,-->
-<!--          +260966324787-->
-<!--        </p>-->
         <div class="space-x-2 mt-3">
           <a href="">
             <font-awesome-icon :icon="['fab', 'twitter']" class="text-2xl" :style="{color:primaryColor}"/>
@@ -43,13 +36,10 @@ const primaryColor = MyPreset.semantic.primary[200]
     </div>
     <hr class="mt-10 pb-10 "/>
     <div class="flex-col lg:flex-row flex justify-between">
-      <img src="@/assets/logo/shanga_logo_white.svg" alt="" class="h-20">
+      <img src="/svgs/shanga_logo_white.svg" alt="" class="h-20 mb-5">
       <div class="flex flex-col">
         <div class="text-center flex flex-col lg:text-justify lg:mt-0 mt-10 p-3 lg:p-0">
           <h1 class="text-xl font-bold">Lusaka</h1>
-<!--          <div class="mt-5 flex-col flex">-->
-<!--            <p><font-awesome-icon :icon="['fas', 'house-chimney']"/> Lusaka | Zambia</p>-->
-<!--          </div>-->
         </div>
         <p class=" mb-3 font-bold text-center lg:text-left">
           <font-awesome-icon :icon="['fas', 'location-pin-lock']"/>&nbsp;Lusaka, Zambia

@@ -14,7 +14,7 @@
             </h1>
             <div
                 class="max-w-lg w-full md:mt-6 mt-2 mb-4 flex items-center justify-center text-justify flex-col lg:hidden">
-              <img src="@/assets/logo/sign-up.svg" class="bg-no-repeat bg-center bg-cover w-32" alt="">
+              <img src="/svgs/sign-up.svg" class="bg-no-repeat bg-center bg-cover w-32" alt="">
             </div>
             <p class="text-textColor max-w-2xl text-center md:text-left">Sign up for a secure account on our platform by
               providing your personal
@@ -24,7 +24,7 @@
               email address.</p>
           </div>
           <div class="max-w-lg md:mt-6 mt-7 justify-center text-justify flex-col hidden lg:inline-flex">
-            <img src="@/assets/logo/sign-up.svg" class="bg-no-repeat bg-center bg-cover" alt="">
+            <img src="/svgs/sign-up.svg" class="bg-no-repeat bg-center bg-cover" alt="">
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
               product</h1>
             <div
                 class="max-w-lg w-full md:mt-6 mt-2 mb-4 flex items-center justify-center text-justify flex-col lg:hidden">
-              <img src="@/assets/logo/phone.svg" class="bg-no-repeat bg-center bg-cover w-32"
+              <img src="/svgs/phone.svg" class="bg-no-repeat bg-center bg-cover w-32"
                    alt="">
             </div>
             <p class="text-textColor max-w-2xl text-center md:text-left">Select from a range of investment products that
@@ -47,7 +47,7 @@
               effectively.</p>
           </div>
           <div class="max-w-lg md:mt-6 mt-7 justify-center text-justify flex-col hidden lg:inline-flex">
-            <img src="@/assets/logo/phone.svg" class="bg-no-repeat bg-center bg-cover w-48" alt="">
+            <img src="/svgs/phone.svg" class="bg-no-repeat bg-center bg-cover w-48" alt="">
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
               Investment</h1>
             <div
                 class="max-w-lg w-full md:mt-6 mt-2 mb-4 flex items-center justify-center text-justify flex-col lg:hidden">
-              <img src="@/assets/logo/create-account.svg" class="bg-no-repeat bg-center bg-cover w-32"
+              <img src="/svgs/create-account.svg" class="bg-no-repeat bg-center bg-cover w-32"
                    alt="">
             </div>
             <p class="text-textColor max-w-2xl text-center md:text-left">Deposit funds easily through secure payment
@@ -69,7 +69,7 @@
               your money will be allocated to the selected investment product.</p>
           </div>
           <div class="max-w-lg md:mt-6 mt-7 justify-center text-justify flex-col hidden lg:inline-flex">
-            <img src="@/assets/logo/create-account.svg" class="bg-no-repeat bg-center bg-cover" alt="">
+            <img src="/svgs/create-account.svg" class="bg-no-repeat bg-center bg-cover" alt="">
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@
               Grow</h1>
             <div
                 class="max-w-lg w-full md:mt-6 mt-2 mb-4 flex items-center justify-center text-justify flex-col lg:hidden">
-              <img src="@/assets/logo/growth.svg" class="bg-no-repeat bg-center bg-cover w-32"
+              <img src="/svgs/growth.svg" class="bg-no-repeat bg-center bg-cover w-32"
                    alt="">
             </div>
             <p class="text-textColor max-w-2xl text-center md:text-left">Once invested, you can monitor your portfolio’s
@@ -90,7 +90,7 @@
             </p>
           </div>
           <div class="max-w-lg md:mt-0 mt-7 justify-center text-justify flex-col hidden lg:inline-flex">
-            <img src="@/assets/logo/growth.svg" class="bg-no-repeat bg-center bg-cover w-48" alt="">
+            <img src="/svgs/growth.svg" class="bg-no-repeat bg-center bg-cover w-48" alt="">
           </div>
         </div>
       </div>

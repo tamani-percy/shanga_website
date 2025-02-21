@@ -69,7 +69,7 @@ onUnmounted(() => {
     <Menubar :model="items">
       <template #start>
         <a href="/" id="shanga_logo">
-          <img src="../assets/logo/shanga_logo.svg" alt="No logo" class="w-24"/>
+          <img src="../../public/svgs/shanga_logo.svg" alt="No logo" class="w-24"/>
         </a>
       </template>
       <template #item="{ item, props }">
