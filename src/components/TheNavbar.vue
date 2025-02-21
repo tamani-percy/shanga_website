@@ -53,8 +53,6 @@ function removeClass(event: any) {
     childElement.classList.remove('fa-bounce')
   }
 }
-const primaryColorHover: any = MyPreset.semantic.primary[500];
-
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
