@@ -32,7 +32,6 @@ const selectedTopics = ref([
                      class="w-full mb-3  bg-gray-50 rounded-lg border-0 text-gray-900 text-sm focus:border-secondaryColor focus:outline-secondaryColor block p-2.5"/>
           <Textarea type="text" name="" id="" placeholder="Message" rows="10" required
                     class="w-full bg-gray-50 rounded-lg border-0 text-gray-900 text-sm focus:border-secondaryColor focus:outline-secondaryColor block p-2.5"></Textarea>
-
         </div>
         <Button disabled raised class="mt-5">
           <font-awesome-icon :icon="['fas','user']"/> &nbsp; Submit

@@ -66,10 +66,10 @@ onUnmounted(() => {
 <template>
   <div class="flex justify-center w-full sticky parent_menubar transition-transform duration-300"
        :class="{ 'hidden-navbar': !isNavbarVisible }">
-    <Menubar :model="items">
+    <Menubar :model="items" class="!backdrop-blur-sm bg-whiteBg shadow-sm">
       <template #start>
         <a href="/" id="shanga_logo">
-          <img src="../../public/svgs/shanga_logo.svg" alt="No logo" class="w-24"/>
+          <img src="/svgs/shanga_logo.svg" alt="No logo" class="w-24"/>
         </a>
       </template>
       <template #item="{ item, props }">
@@ -101,15 +101,22 @@ onUnmounted(() => {
 
 <style>
 .parent_menubar {
-  z-index: 1000;
   background-color: #f8fafc;
-  position: fixed;
   top: 0;
-  width: 100%;
   transition: transform 0.3s ease-in-out;
+  width: 100%;
+  position: fixed !important;
+  z-index: 1000 !important;
 }
 
 .hidden-navbar {
   transform: translateY(-100%);
+}
+
+@media screen and (min-width: 768px) {
+  .p-menubar {
+    padding-right: 40px !important;
+    padding-left: 40px !important;
+  }
 }
 </style>

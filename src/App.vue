@@ -10,6 +10,8 @@ body, html {
   width: 100%;
   height: 100%;
   font-family: "Open Sans", serif;
+  background: #F7F6F9;
+
 }
 
 </style>
