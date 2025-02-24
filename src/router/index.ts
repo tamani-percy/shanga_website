@@ -6,7 +6,7 @@ import ContactUs from "@/components/ContactUs/ContactUs.vue";
 import AboutUs from "@/components/AboutUs/AboutUs.vue";
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+    history: createWebHistory(),
     scrollBehavior() {
         return {top: 0, left: 0}
     },
