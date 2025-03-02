@@ -1,5 +1,6 @@
 <script setup>
 import Card from "primevue/card"
+
 </script>
 
 <template>
@@ -18,15 +19,15 @@ import Card from "primevue/card"
 
 <style scoped>
 .p-card {
-  max-width: 60% !important;
-  background-color: #343a40;
+  max-width: 57% !important;
+  background-color: #03807a;
   color: white;
 }
 
 @media (max-width: 640px) {
   .p-card {
     max-width: 90% !important;
-    background-color: #343a40;
+    background-color: #03807a;
 
   }
 }

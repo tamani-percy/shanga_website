@@ -7,21 +7,18 @@
     <template #content>
       <div class="w-full flex-col">
 
-        <div class="flex md:flex-row justify-center flex-col-reverse mt-10">
+        <div class="flex md:flex-row flex-col-reverse mt-10 justify-between">
           <div
-              class="max-w-4xl md:mt-6 pt-5 ms-1 md:ms-5">
+              class="max-w-4xl md:mt-12 pt-5 ms-1">
             <h1 class="text-xl mb-5 md:text-2xl text-textColor text-center md:text-left font-bold">Create an account
             </h1>
             <div
                 class="max-w-lg w-full md:mt-6 mt-2 mb-4 flex items-center justify-center text-justify flex-col lg:hidden">
               <img src="/svgs/sign-up.svg" class="bg-no-repeat bg-center bg-cover w-32" alt="">
             </div>
-            <p class="text-textColor max-w-2xl text-center md:text-left">Sign up for a secure account on our platform by
+            <p class="text-textColor max-w-2xl text-center md:text-left">Sign up on our platform by
               providing your personal
-              information
-              (NRC/Passport, Proof of income, proof of residence), setting up a username and password, and verifying
-              your
-              email address.</p>
+              information. This makes us serve you better by tailoring our products.</p>
           </div>
           <div class="max-w-lg md:mt-6 mt-7 justify-center text-justify flex-col hidden lg:inline-flex">
             <img src="/svgs/sign-up.svg" class="bg-no-repeat bg-center bg-cover" alt="">
@@ -40,10 +37,11 @@
               <img src="/svgs/phone.svg" class="bg-no-repeat bg-center bg-cover w-32"
                    alt="">
             </div>
-            <p class="text-textColor max-w-2xl text-center md:text-left">Select from a range of investment products that
-              best suit your financial
+            <p class="text-textColor max-w-2xl text-center md:text-left">Select from a range of investment products or
+              "baskets"
+              that best suit your financial
               goals.
-              Options include equity index funds and Bonds + Stocks ETFs, designed to balance risk and reward
+              These baskets are designed to balance risk and reward
               effectively.</p>
           </div>
           <div class="max-w-lg md:mt-6 mt-7 justify-center text-justify flex-col hidden lg:inline-flex">
@@ -64,9 +62,9 @@
             </div>
             <p class="text-textColor max-w-2xl text-center md:text-left">Deposit funds easily through secure payment
               options
-              such as bank transfers, credit/debit cards, digital wallets or mobile money. Once your payment is
+              such as bank transfers, or mobile money. Once your payment is
               confirmed,
-              your money will be allocated to the selected investment product.</p>
+              your money will be allocated to your selected account.</p>
           </div>
           <div class="max-w-lg md:mt-6 mt-7 justify-center text-justify flex-col hidden lg:inline-flex">
             <img src="/svgs/create-account.svg" class="bg-no-repeat bg-center bg-cover" alt="">
@@ -84,7 +82,8 @@
               <img src="/svgs/growth.svg" class="bg-no-repeat bg-center bg-cover w-32"
                    alt="">
             </div>
-            <p class="text-textColor max-w-2xl text-center md:text-left">Once invested, you can monitor your portfolio’s
+            <p class="text-textColor max-w-2xl text-center md:text-left">Invest in a chosen basket, and monitor your
+              portfolio’s
               performance through our user-friendly dashboard. Our professional team will manage the investments, aiming
               for steady growth over time.
             </p>
@@ -112,7 +111,7 @@ export default {
 
 .p-card {
   background-color: #343a40;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 </style>

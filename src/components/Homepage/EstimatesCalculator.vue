@@ -1,235 +1,268 @@
-<!--<template>-->
-<!--  <div class="bg-secondaryColor p-5 text-textColor w-full estimates-container lg:inline flex justify-center flex-col items-center">-->
-<!--    <h1 class="text-4xl font-bold text-center">Returns Calculator</h1>-->
-<!--    <p class="mt-3 text-center">Check out our compound interest calculator to see just how much the power of time and-->
-<!--      compound interest can help your money grow.*</p>-->
-<!--    <div class="flex justify-center gap-x-10 flex-col lg:flex-row">-->
-<!--      <div class="flex flex-col mt-24">-->
-<!--        <div>-->
-<!--          <div>-->
-<!--            <label for="initialDeposit" class="block mb-1">Initial Deposit: &nbsp;-->
-<!--              <font-awesome-icon :icon="['fas', 'circle-info']"-->
-<!--                                 class="text-2xl text-textColor bg-secondaryColor hover:cursor-pointer"-->
-<!--                                 v-tooltip="{ value: 'The amount first deposited after the account or basket is created.', autoHide:false}"/>-->
-<!--            </label>-->
-<!--            <input type="number" v-model.number="initialDeposit" placeholder="K"-->
-<!--                   class="bg-textInputColor focus:outline-0 text-textAltColor rounded-lg w-60 block p-2.5"/>-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <label for="annualReturn" class="block mt-4 mb-1">Average Annual Return (%):&nbsp;-->
-<!--              <font-awesome-icon :icon="['fas', 'circle-info']"-->
-<!--                                 class="text-2xl text-textColor bg-secondaryColor hover:cursor-pointer"-->
-<!--                                 v-tooltip="{ value: 'Expected annual return from investment.', autoHide:false}"/>-->
-<!--            </label>-->
-<!--            <input type="number" v-model.number="annualReturn" placeholder="K"-->
-<!--                   class="bg-textInputColor focus:outline-0 text-textAltColor rounded-lg w-60 block p-2.5"/>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <div>-->
-<!--            <label for="contributions"-->
-<!--                   class="block mt-4 mb-1 ">Contributions:&nbsp;-->
-<!--              <font-awesome-icon :icon="['fas', 'circle-info']"-->
-<!--                                 class="text-2xl text-textColor bg-secondaryColor hover:cursor-pointer"-->
-<!--                                 v-tooltip="{ value: 'Number of contributions made after initial deposit.', autoHide:false}"/>-->
-<!--            </label>-->
-<!--            <input type="number" v-model.number="contributions" placeholder="K"-->
-<!--                   class="bg-textInputColor focus:outline-0 text-textAltColor rounded-lg w-60 block p-2.5"/>-->
-<!--          </div>-->
-<!--          <div class="mt-2 justify-start gap-x-5 flex">-->
-<!--            <div class="flex flex-col justify-between">-->
-<!--              <label><input type="radio" v-model="contributionPeriod" value="daily"-->
-<!--                            class="w-4 h-4 text-green-600 bg-gray-100 border-gray-900 focus:ring-green-500"/>-->
-<!--                Daily-->
-<!--              </label>-->
-<!--              <label><input type="radio" v-model="contributionPeriod" value="weekly"-->
-<!--                            class="w-4 h-4 text-green-600 bg-gray-100 border-gray-900 focus:ring-green-500"/>-->
-<!--                Weekly-->
-<!--              </label>-->
-<!--            </div>-->
-<!--            <div class="flex flex-col justify-between">-->
-<!--              <label><input type="radio" v-model="contributionPeriod" value="monthly"-->
-<!--                            class="w-4 h-4 text-green-600 bg-gray-100 border-gray-900 focus:ring-green-500"/>-->
-<!--                Monthly-->
-<!--              </label>-->
-<!--              <label><input type="radio" v-model="contributionPeriod" value="yearly"-->
-<!--                            class="w-4 h-4 text-green-600 bg-gray-100 border-gray-900 focus:ring-green-500"/>-->
-<!--                Yearly-->
-<!--              </label>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="mt-4 flex flex-col items-start">-->
-<!--          <label for="duration" class="block mt-4 mb-1">Duration-->
-<!--            (Years)&nbsp;-->
-<!--            <font-awesome-icon :icon="['fas', 'circle-info']"-->
-<!--                               class="text-2xl text-textColor bg-secondaryColor hover:cursor-pointer"-->
-<!--                               v-tooltip="{ value: 'The frequency with which the contributions are made.', autoHide:false}"/>-->
-<!--          </label>-->
+<script setup lang="ts">
+import {onMounted, onUnmounted, ref, watch} from 'vue';
+import {Bar} from 'vue-chartjs';
+import {Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale} from 'chart.js';
+import InputNumber from 'primevue/inputnumber';
+import RadioButton from 'primevue/radiobutton';
+import Card from 'primevue/card';
+import Button from 'primevue/button';
+import Divider from 'primevue/divider';
+import ProgressSpinner from 'primevue/progressspinner';
+import RadioButtonGroup from 'primevue/radiobuttongroup';
+// @ts-ignore
 
-<!--          <span class="font-extrabold text-right text-md text-primaryColorFocus inline"> <font-awesome-icon-->
-<!--              class="text-xl fa-icon inline" :icon="['fas', 'clock']" spin/> &nbsp;{{ duration }}</span>-->
-<!--          <input type="range" v-model.number="duration" min="1" max="100"-->
-<!--                 class="w-2/3 text-center accent-primaryColor h-2 mt-3 bg-textColor rounded-lg cursor-pointer"/>-->
-<!--        </div>-->
-<!--        <div class="w-full flex justify-start mt-5">-->
-<!--          <button @click="calculateInvestment"-->
-<!--                  class="border-primaryColor border hover:shadow-lg hover:bg-primaryColor hover:text-white rounded-full text-left focus:outline-none focus:ring-primaryColorFocus font-medium text-2xs px-4 py-2">-->
-<!--            Submit-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="w-1/2 mt-5 min-h-dvh rounded-lg">-->
-<!--        <h1 class="text-md font-bold text-primaryColorHover text-center my-3">Potential Future Balance: &nbsp; <br>-->
-<!--          <span-->
-<!--              class="text-3xl font-bold text-primaryColor border-dashed border-b">K{{ futureBalance }}</span></h1>-->
-<!--        <Bar slot="Chart couldn't be loaded." ref="barChart" :key="chartKey" :data="data" :options="options"-->
-<!--             class="w-full h-full max-w-5xl bar_chart bg-textColor rounded-lg p-5"/>-->
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</template>-->
+const initialDeposit = ref(0);
+const contributions = ref(0);
+const contributionPeriod = ref('monthly');
+const duration = ref(1);
+const annualReturn = ref(0);
+const futureBalance = ref(0);
+const chartKey = ref(0);
+const isLoading = ref(false);
+const showChart = ref(false);
 
-<!--<script lang="ts">-->
-<!--import {BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip} from 'chart.js'-->
-<!--import {Bar} from 'vue-chartjs'-->
-<!--import Card from 'primevue/card';-->
-<!--import {nextTick} from "vue";-->
-<!--import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";-->
+const chartData = ref({
+  labels: [] as string[],
+  datasets: [
+    {
+      label: 'Investment',
+      data: [] as number[],
+      backgroundColor: '#343a40',
+      borderColor: '#343a40',
+      borderWidth: 1,
+      fill: false,
+    },
+    {
+      label: 'Return',
+      data: [] as number[],
+      backgroundColor: '#05b3a0',
+      borderColor: '#05b3a0',
+      borderWidth: 1,
+      fill: false,
+    },
+  ],
+});
 
-<!--ChartJS.register(CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement)-->
+const chartOptions = ref({
+  responsive: true,
+  maintainAspectRatio: true,
+  aspectRatio: 1,
+  scales: {
+    x: {
+      display: true,
+      stacked: true,
+      title: {
+        display: true,
+        text: 'Years',
+      },
+    },
+    y: {
+      display: true,
+      stacked: true,
+      title: {
+        display: true,
+        text: 'Balance (K)',
+      },
+    },
+  },
+});
 
-<!--export default {-->
-<!--  name: 'App',-->
-<!--  components: {-->
-<!--    FontAwesomeIcon,-->
-<!--    Card,-->
-<!--    Bar-->
-<!--  },-->
-<!--  data() {-->
-<!--    return {-->
-<!--      initialDeposit: 0,-->
-<!--      contributions: 0,-->
-<!--      contributionPeriod: 'monthly',-->
-<!--      duration: 1,-->
-<!--      annualReturn: 0,-->
-<!--      futureBalance: 0,-->
-<!--      chartKey: 0, // Add a key to force re-render-->
-<!--      data: {-->
-<!--        labels: [],-->
-<!--        datasets: [-->
-<!--          {-->
-<!--            label: "Investment",-->
-<!--            data: [],-->
-<!--            backgroundColor: '#b60101',-->
-<!--            borderColor: '#b60101',-->
-<!--            borderWidth: 1,-->
-<!--            fill: false,-->
-<!--          },-->
-<!--          {-->
-<!--            label: "Return",-->
-<!--            data: [],-->
-<!--            backgroundColor: '#50B748',-->
-<!--            borderColor: '#50B748',-->
-<!--            borderWidth: 1,-->
-<!--            fill: false,-->
-<!--          }-->
-<!--        ],-->
-<!--      },-->
-<!--      options: {-->
-<!--        responsive: true,-->
+watch(annualReturn, (newValue) => {
+  if (newValue > 20) {
+    annualReturn.value = 20;
+  }
+});
 
-<!--        scales: {-->
-<!--          x: {-->
-<!--            display: true,-->
-<!--            stacked: true,-->
-<!--            title: {-->
-<!--              display: true,-->
-<!--              text: 'Years'-->
-<!--            }-->
-<!--          },-->
-<!--          y: {-->
-<!--            display: true,-->
-<!--            stacked: true,-->
-<!--            title: {-->
-<!--              display: true,-->
-<!--              text: 'Balance (K)'-->
-<!--            }-->
-<!--          }-->
-<!--        }-->
-<!--      }-->
-<!--    }-->
-<!--  },-->
-<!--  computed: {-->
-<!--    durationLabel() {-->
-<!--      return 'Years';-->
-<!--    },-->
-<!--    durationMin() {-->
-<!--      return 1;-->
-<!--    },-->
-<!--    durationMax() {-->
-<!--      return 75;-->
-<!--    }-->
-<!--  },-->
-<!--  mounted() {-->
-<!--    // Apply border radius to the canvas-->
-<!--    nextTick(() => {-->
-<!--      const canvas = this.$refs.barChart.$el.querySelector('canvas');-->
-<!--      if (canvas) {-->
-<!--        canvas.style.borderRadius = '15px';  // Adjust the radius as needed-->
-<!--      }-->
-<!--    });-->
-<!--  },-->
-<!--  methods: {-->
-<!--    calculateInvestment() {-->
-<!--      const periodsPerYear = {daily: 365, weekly: 52, monthly: 12, yearly: 1}-->
-<!--      const contributionPeriodValue = periodsPerYear[this.contributionPeriod]-->
-<!--      const totalPeriods = this.duration * contributionPeriodValue-->
-<!--      const ratePerPeriod = this.annualReturn / 100 / contributionPeriodValue-->
+// @ts-ignore
+const calculateInvestment = async () => {
+  if (annualReturn.value > 20) {
+    annualReturn.value = 20;
+  }
 
-<!--      let balance = this.initialDeposit-->
-<!--      let labels = []-->
-<!--      let investmentData = []-->
-<!--      let returnData = []-->
-<!--      let currentYear = new Date().getFullYear()-->
+  isLoading.value = true;
+  showChart.value = false;
 
-<!--      // Clear the labels array before adding new ones-->
-<!--      this.data.labels = [];-->
+  // Simulate a delay to allow the UI to update
+  await new Promise(resolve => setTimeout(resolve, 100));
 
-<!--      for (let i = 1; i <= this.duration; i++) {-->
-<!--        let yearlyBalance = balance;-->
-<!--        let yearlyInvestment = this.initialDeposit;-->
-<!--        let yearlyReturn = 0;-->
+  const periodsPerYear: any = {daily: 365, weekly: 52, monthly: 12, yearly: 1};
+  const contributionPeriodValue = periodsPerYear[contributionPeriod.value];
+  const ratePerPeriod = annualReturn.value / 100 / contributionPeriodValue;
 
-<!--        for (let j = 1; j <= contributionPeriodValue; j++) {-->
-<!--          yearlyReturn += yearlyBalance * ratePerPeriod;-->
-<!--          yearlyBalance += this.contributions + yearlyBalance * ratePerPeriod;-->
-<!--        }-->
+  let balance = initialDeposit.value;
+  const labels = [];
+  const investmentData = [];
+  const returnData = [];
+  let currentYear = new Date().getFullYear();
 
-<!--        labels.push(currentYear + i - 1);-->
-<!--        investmentData.push(yearlyInvestment);-->
-<!--        returnData.push(yearlyReturn.toFixed(2));-->
+  for (let i = 1; i <= duration.value; i++) {
+    let yearlyBalance = balance;
+    let yearlyInvestment = initialDeposit.value;
+    let yearlyReturn = 0;
 
-<!--        balance = yearlyBalance;-->
-<!--      }-->
+    for (let j = 1; j <= contributionPeriodValue; j++) {
+      yearlyReturn += yearlyBalance * ratePerPeriod;
+      yearlyBalance += contributions.value + yearlyBalance * ratePerPeriod;
+    }
 
-<!--      this.futureBalance = balance.toFixed(2)-->
-<!--      this.data.labels = labels-->
-<!--      this.data.datasets[0].data = investmentData-->
-<!--      this.data.datasets[1].data = returnData-->
+    labels.push((currentYear + i - 1).toString());
+    investmentData.push(yearlyInvestment);
+    returnData.push(parseFloat(yearlyReturn.toFixed(2)));
 
-<!--      this.chartKey += 1-->
-<!--    }-->
-<!--  }-->
-<!--}-->
-<!--</script>-->
+    balance = yearlyBalance;
+  }
 
-<!--<style scoped>-->
-<!--.estimates-container {-->
-<!--height: 800px;-->
-<!--  gap: 20px;-->
-<!--}-->
-<!--</style>-->
+  futureBalance.value = parseFloat(balance.toFixed(2));
+  chartData.value.labels = labels;
+  chartData.value.datasets[0].data = investmentData;
+  chartData.value.datasets[1].data = returnData;
 
-<template></template>
+  chartKey.value += 1;
+  isLoading.value = false;
+  showChart.value = true;
+
+  document.getElementById('chart-container')?.scrollIntoView({behavior: 'smooth'});
+}
+const isMobile = ref(false);
+
+const checkIfMobile = () => {
+  isMobile.value = window.innerWidth <= 768; // Adjust the breakpoint as needed
+};
+
+onMounted(() => {
+  checkIfMobile();
+  window.addEventListener('resize', checkIfMobile);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkIfMobile);
+});
+</script>
+
+<template>
+  <Card :style="{
+    minHeight: showChart ? (isMobile ? 'fit-content' : 'fit-content') : (isMobile ? '950px' : '200px'),
+    height: showChart ? 'auto' : (isMobile ? '600px' : '500px'),
+    backgroundColor: '#03807A',
+    borderRadius: 0,
+    width: '100%',
+    marginTop: '10px',
+    transition: 'height 0.5s ease',
+    paddingTop: '10px'
+  }">
+
+    <template #content>
+      <h1 class="text-4xl font-bold text-center text-textColor">Returns Calculator</h1>
+      <p class="mt-3 text-center text-textColor">
+        Check out our compound interest calculator to see just how much the power of time and compound interest can help
+        your money grow.*
+      </p>
+      <Divider/>
+      <div class="card flex-wrap flex mt-10 gap-x-4 lg:gap-y-0 gap-y-5 items-center justify-center">
+        <div>
+          <label for="initialDeposit" class="block mb-1 text-textColor">Initial Deposit: &nbsp;</label>
+          <InputNumber id="initialDeposit" v-model="initialDeposit" name="initialDeposit" prefix="ZMW "
+                       placeholder="ZMW"/>
+        </div>
+        <div>
+          <label for="annualReturn" class="block mb-1 text-textColor">Average Annual Return:&nbsp;</label>
+          <InputNumber id="annualReturn" v-model="annualReturn" name="annualReturn" :min="0" :max="20" suffix="%"
+                       placeholder="%"/>
+        </div>
+        <div>
+          <label for="contributions" class="block mb-1 text-textColor">Contributions:&nbsp;</label>
+          <InputNumber id="contributions" v-model="contributions" name="contributions" placeholder="ZMW" prefix="ZMW "
+          />
+        </div>
+        <div>
+          <label for="initialDeposit" class="block text-textColor">Deposit frequency: &nbsp;</label>
+          <RadioButtonGroup name="contributionPeriod" class="flex flex-col">
+            <div class="flex flex-col justify-between mb-1">
+              <label class="text-textColor">
+                <RadioButton v-model="contributionPeriod" inputId="daily" value="daily"/>
+                Daily
+              </label>
+            </div>
+            <div class="flex flex-col justify-between mb-1">
+              <label class="text-textColor">
+                <RadioButton v-model="contributionPeriod" inputId="weekly" value="weekly"/>
+                Weekly
+              </label>
+            </div>
+            <div class="flex flex-col justify-between mb-1">
+              <label class="text-textColor">
+                <RadioButton v-model="contributionPeriod" inputId="monthly" value="monthly"/>
+                Monthly
+              </label>
+            </div>
+            <div class="flex flex-col justify-between">
+              <label class="text-textColor">
+                <RadioButton v-model="contributionPeriod" inputId="yearly" value="yearly"/>
+                Yearly
+              </label>
+            </div>
+          </RadioButtonGroup>
+        </div>
+        <div>
+          <label for="duration" class="block mb-1 text-textColor">Duration (Years)&nbsp;</label>
+          <InputNumber id="duration" v-model="duration" :min="1" :max="100" name="duration" placeholder="0"
+                       suffix=" Years"/>
+        </div>
+        <div class="w-full flex justify-center mt-5">
+          <Button label="Calculate😊" @click="calculateInvestment" rounded raised style="width: 10rem"
+                  severity="secondary"/>
+        </div>
+      </div>
+      <div class="flex justify-center flex-col items-center">
+        <h1 class="text-md font-bold text-textColor text-2xl text-center my-7">
+          Potential Future Balance: &nbsp; <br>
+          <span class="text-4xl font-bold border-dashed border-b" style="color: #171C1F">
+            ZMW {{ futureBalance.toLocaleString() }}
+          </span>
+        </h1>
+        <div class="loader-container" v-if="isLoading">
+          <ProgressSpinner style="width: 50px; height: 50px" strokeWidth="3" fill="#343a40" animationDuration=".5s"/>
+        </div>
+        <div id="chart-container" class="max-w-6xl h-dvh w-fit lg:w-full flex justify-center">
+          <Bar v-if="showChart" :key="chartKey" :data="chartData" :options="chartOptions"
+               class="max-w-5xl bg-textColor rounded-lg p-5"/>
+        </div>
+      </div>
+    </template>
+    <template #footer>
+      <div class="text-center text-sm text-textColor mt-5 p-4 flex justify-center">
+        <p class=" max-w-4xl">
+          The chart shows an estimate of how much an investment could grow over time based on the initial deposit,
+          contribution frequency, and interest rate specified. Changes in those variables can affect the
+          outcome. Results do not predict the
+          investment performance of any portfolio and do not take into consideration economic or market factors which
+          can impact performance.
+        </p>
+      </div>
+    </template>
+  </Card>
+</template>
+
+<style>
+.card {
+  transition: height 0.5s ease;
+  width: 100%;
+}
+
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust as needed */
+}
+
+/* Adjust chart container height for mobile */
+@media (max-width: 768px) {
+  #chart-container {
+    height: 400px; /* Adjust as needed */
+  }
+}
+</style>

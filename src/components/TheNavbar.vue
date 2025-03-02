@@ -1,14 +1,13 @@
-
 <script setup lang="ts">
 // @ts-nocheck
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
+import { useRoute } from "vue-router"; // Import useRoute from Vue Router
 import Menubar from "primevue/menubar";
 import { MyPreset } from "@/PrimevuePresets.ts";
 
+const primaryColor: any = MyPreset.semantic.primary[500];
 
-const primaryColor:any = MyPreset.semantic.primary[500];
-
-const items:any = ref([
+const items: any = ref([
   {
     label: "Home",
     icon: ["fas", "house"],
@@ -23,6 +22,11 @@ const items:any = ref([
     label: "Contact Us",
     icon: ["fas", "phone"],
     route: "/contact_us",
+  },
+  {
+    label: "Updates",
+    icon: ["fas", "bell"],
+    route: "/updates",
   },
 ]);
 
@@ -39,18 +43,17 @@ const handleScroll = () => {
   lastScrollY = currentScrollY;
 };
 
-
 function addClass(event: any) {
-  const childElement = event.target.querySelector('.fa-icon')
+  const childElement = event.target.querySelector(".fa-icon");
   if (childElement) {
-    childElement.classList.add('fa-bounce')
+    childElement.classList.add("fa-bounce");
   }
 }
 
 function removeClass(event: any) {
-  const childElement = event.target.querySelector('.fa-icon')
+  const childElement = event.target.querySelector(".fa-icon");
   if (childElement) {
-    childElement.classList.remove('fa-bounce')
+    childElement.classList.remove("fa-bounce");
   }
 }
 
@@ -61,36 +64,67 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
+
+// Get the current route
+const route = useRoute();
+
+
+const isActive = (itemRoute: string) => {
+  return route.path === itemRoute;
+};
 </script>
 
 <template>
-  <div class="flex justify-center w-full sticky parent_menubar transition-transform duration-300"
-       :class="{ 'hidden-navbar': !isNavbarVisible }">
-    <Menubar :model="items" class="!backdrop-blur-sm bg-whiteBg shadow-sm">
+  <div
+      class="flex justify-center w-full sticky parent_menubar transition-transform duration-300"
+      :class="{ 'hidden-navbar': !isNavbarVisible }"
+  >
+    <Menubar
+        :model="items"
+        class="!backdrop-blur-sm bg-whiteBg shadow-sm flex justify-between items-center px-4"
+    >
       <template #start>
-        <a href="/" id="shanga_logo">
-          <img src="/svgs/shanga_logo.svg" alt="No logo" class="w-24"/>
+        <a href="/" id="shanga_logo" class="mr-4">
+          <!-- Adds margin-right for spacing -->
+          <img src="/svgs/shanga_logo.svg" alt="No logo" class="w-24" />
         </a>
       </template>
+
       <template #item="{ item, props }">
-        <router-link :to="item.route" v-slot="{ href, navigate }" custom>
-          <a v-ripple :href="href" v-bind="props.action" @click="navigate" @mouseenter="addClass"
-             @mouseleave="removeClass">
-            <font-awesome-icon class="text-md fa-icon" :icon="item.icon"/> &nbsp;
+        <div class="flex-1 flex justify-start lg:justify-center">
+          <!-- Centers the items -->
+          <router-link :to="item.route" v-slot="{ href, navigate }" custom>
+            <a
+                v-ripple
+                :href="href"
+                v-bind="props.action"
+                @click="navigate"
+                @mouseenter="addClass"
+                @mouseleave="removeClass"
+                :class="{ 'active-menu': isActive(item.route) }"
+            >
+            <font-awesome-icon class="text-md fa-icon" :icon="item.icon" /> &nbsp;
             <span>{{ item.label }}</span>
-          </a>
-        </router-link>
+            </a>
+          </router-link>
+        </div>
       </template>
+
       <template #end>
-        <div class="inline-flex">
+        <div class="lg:ml-36 flex items-center">
           <div class="border-r border hidden lg:inline-block"></div>
-          <router-link to="#" id="navbar-login-btn"
-                       class="font-medium px-4 py-2 text-sm text-center h-12 w-20 items-center flex justify-center hover:underline">
+          <router-link
+              :to="{ name: 'coming_soon' }"
+              id="navbar-login-btn"
+              class="font-medium px-4 py-2 text-sm text-center h-12 w-20 items-center flex justify-center hover:underline"
+          >
             Log In
           </router-link>
-          <router-link to="#"
-                       class="rounded-full hover:shadow-lg font-medium text-sm px-4 py-2 text-center h-12 w-28 items-center content-center"
-                       :style="{ background: primaryColor }">
+          <router-link
+              :to="{ name: 'coming_soon' }"
+              class="rounded-full hover:shadow-lg font-medium text-sm px-4 py-2 text-center h-12 w-44 items-center content-center"
+              :style="{ background: primaryColor }"
+          >
             <span class="text-textColor">Get Started</span>
           </router-link>
         </div>
@@ -111,6 +145,12 @@ onUnmounted(() => {
 
 .hidden-navbar {
   transform: translateY(-100%);
+}
+
+.active-menu {
+  color: v-bind('primaryColor');
+  font-weight: bold;
+  border-bottom: 2px solid v-bind('primaryColor');
 }
 
 @media screen and (min-width: 768px) {

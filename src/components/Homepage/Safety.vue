@@ -7,7 +7,7 @@ const primaryColor = MyPreset.semantic.primary[500]
 </script>
 
 <template>
-  <div class="w-full flex justify-center" :style="{backgroundColor:tertiaryColor}">
+  <div class="w-full flex justify-center pb-10" :style="{backgroundColor:tertiaryColor}">
     <div class="lg:w-[900px] flex justify-between flex-col-reverse lg:flex-row gap-x-10">
       <div class="lg:w-[700px]">
         <h1 class="text-4xl font-bold pt-10 text-center pb-2">Your money is safe with us</h1>
@@ -19,7 +19,7 @@ const primaryColor = MyPreset.semantic.primary[500]
           <img src="@/assets/gif/shield.gif" alt="" class="lg:max-w-xl lg:h-fit h-[200px] pb-0 lg:hidden">
         </div>
 
-        <div class="grid grid-cols-1 px-3 lg:px-0 lg:grid-cols-2 grid-rows-1 lg:grid-rows-2 gap-10 lg:pt-14">
+        <div class="grid grid-cols-1 px-10 lg:px-0 lg:grid-cols-2 grid-rows-1 lg:grid-rows-2 gap-10 lg:pt-14">
           <div class="bg-blue-500 text-white flex flex-col items-start">
             <font-awesome-icon :icon="['fas', 'bank']" class="text-4xl rounded-lg"
                                :style="{color:primaryColor}"/>
@@ -42,13 +42,6 @@ const primaryColor = MyPreset.semantic.primary[500]
             <h1 class="text-justify my-4 font-bold text-2xl">Covered by Zambia SEC</h1>
             <p class="text-justify">Trading accounts are held by our parent company, Fundalytics Technologies Limited, a
               firm duly registered by the Securities and Exchange Commission in Zambia.</p>
-          </div>
-          <div class="bg-blue-500 text-white flex flex-col items-start">
-<!--            <font-awesome-icon :icon="['fas', 'user-injured']" class="text-4xl rounded-lg"-->
-<!--                               :style="{color:primaryColor}"/>-->
-<!--            <h1 class="text-justify my-4 font-bold text-2xl">Insurance</h1>-->
-<!--            <p class="text-justify">Your stocks portfolio is insured by the Zambia SEC Investor Protection up to-->
-<!--              K50,000.</p>-->
           </div>
         </div>
       </div>

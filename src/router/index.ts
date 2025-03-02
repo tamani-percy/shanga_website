@@ -27,6 +27,16 @@ const router = createRouter({
                     component: () => import("@/components/ContactUs/ContactUs.vue"),
                 },
                 {
+                    path: '/coming_soon',
+                    name: 'coming_soon',
+                    component: () => import("@/components/DashboardComingSoon.vue"),
+                },
+                {
+                    path: '/updates',
+                    name: 'updates',
+                    component: () => import("@/components/Updates.vue"),
+                },
+                {
                     path: '/:pathMatch(.*)*',
                     component: () => import("@/views/404.vue"),
                 },
