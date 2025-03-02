@@ -2,9 +2,6 @@
 import {MyPreset} from "@/PrimevuePresets.ts";
 import {ref, onMounted} from 'vue';
 
-const primaryColor = MyPreset.semantic.primary[500];
-const secondaryColor = MyPreset.semantic.tertiary[500];
-
 const words = [
   "invest your funds.",
   "grow your investments.",
@@ -46,11 +43,11 @@ onMounted(() => {
 
 <template>
   <div class="min-h-[800px] w-full flex justify-center gap-4 relative"
-       :style="{ background: primaryColor }">
+       :style="{ background: '#343A40' }">
     <div class="justify-center flex flex-col">
       <div class="text-center lg:w-[940px] p-5 lg:p-0">
         <span class="text-3xl lg:text-4xl inline-block text-textColor align-middle font-bold">You have an opportunity to <span
-            class="text-3xl lg:text-4xl font-bold underline" :style="{color: secondaryColor}">{{ displayedText }}</span> </span>
+            class="text-3xl lg:text-4xl font-bold underline" :style="{color: '#07FFDC'}">{{ displayedText }}</span> </span>
         <span class="inline-block align-middle text-3xl lg:text-4xl font-bold text-textColor animate-blink">|</span>
         <p class="mt-10 text-textColor text-2xl">We are committed to creating diverse investment options by acting as an
           <br> intermediary investor taking away all the complexities of stock-picking from our clients.</p>
