@@ -177,7 +177,7 @@ const cards = ref([
     name: "Chanda Chandang'oma",
     position: 'Data and Analytics',
     image: '/images/team/david_c.jpg',
-    bio: "Chanda is a dynamic student with a passion for gaming, soccer, music, movies, series, and anime. Balancing academic pursuits with a love for math, Chanda is driven by the ambition to drive his American Muscle Ford Mustang GT around the town. Always curious and eager to learn, he brings enthusiasm and dedication to every endeavor, making the most of every opportunity to grow and succeed."
+    bio: "Chanda is a holder of a Bachelor of Science in Actuarial Science graduating with a Merit from the University of Lusaka with a passion for gaming, soccer, music, movies, series, and anime. Balancing academic pursuits with a love for math, Chanda is driven by the ambition to drive his American Muscle Ford Mustang GT around the town & Land Cruiser 79 series in the outback. Always curious and eager to learn, he brings enthusiasm and dedication to every endeavor, making the most of every opportunity to grow and succeed."
   },
   {
     name: 'Ndeji Chiputa',
