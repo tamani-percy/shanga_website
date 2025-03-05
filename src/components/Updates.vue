@@ -27,18 +27,11 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { ref} from "vue";
 import Timeline from "primevue/timeline";
 import Card from "primevue/card";
 
 const events = ref([
-  {
-    status: 'Project Kickoff',
-    date: '19/01/2024',
-    icon: ["fas", "rocket"],
-    color: '#343a40',
-    content: 'Project Shanga is successfully launched.'
-  },
   {
     status: 'Company Incorporated',
     date: '12/01/2025',

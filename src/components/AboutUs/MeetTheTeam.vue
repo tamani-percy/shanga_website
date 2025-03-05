@@ -87,6 +87,17 @@ const data = ref({
       type: 'person',
       styleClass: '!bg-purple-100 text-white rounded-xl',
       data: {
+        image: '/images/team/david_c.jpg',
+        name: "Chanda Chandang'oma",
+        title: 'Data & Analytics',
+        bio: "Chanda is a dynamic student with a passion for gaming, soccer, music, movies, series, and anime. Balancing academic pursuits with a love for math, Chanda is driven by the ambition to drive his American Muscle Ford Mustang GT around the town. Always curious and eager to learn, he brings enthusiasm and dedication to every endeavor, making the most of every opportunity to grow and succeed."
+      },
+    },
+    {
+      key: '0_2',
+      type: 'person',
+      styleClass: '!bg-purple-100 text-white rounded-xl',
+      data: {
         image: '/images/team/tee.jpg',
         name: 'Tamani Banda',
         title: 'CTO',
@@ -113,17 +124,6 @@ const data = ref({
             name: 'Mwamba Chitalima',
             title: 'Software Engineer',
             bio: "Mwamba Chitalima is an eccentric and knowledge-hungry individual who creates bespoke applications that meet the present need of consumers. He has delved in an array of technologies, and has garnered satiable experience in the industry's requirements in that regard. His hobbies include playing video-games, watching sports, art, and coding. He holds a Bachelor of Science in Computer Science from the University of Zambia."
-          },
-        },
-        {
-          key: '0_1_3',
-          type: 'person',
-          styleClass: '!bg-purple-100 text-white rounded-xl',
-          data: {
-            image: '/images/team/david_c.jpg',
-            name: "Chanda Chandang'oma",
-            title: 'Data & Analytics',
-            bio: "Chanda is a dynamic student with a passion for gaming, soccer, music, movies, series, and anime. Balancing academic pursuits with a love for math, Chanda is driven by the ambition to drive his American Muscle Ford Mustang GT around the town. Always curious and eager to learn, he brings enthusiasm and dedication to every endeavor, making the most of every opportunity to grow and succeed."
           },
         }
       ]

@@ -148,7 +148,6 @@ const isActive = (itemRoute: string) => {
 }
 
 .active-menu {
-  color: v-bind('primaryColor');
   font-weight: bold;
   border-bottom: 2px solid v-bind('primaryColor');
 }

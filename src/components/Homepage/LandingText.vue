@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {MyPreset} from "@/PrimevuePresets.ts";
 import {ref, onMounted} from 'vue';
 
 const words = [
