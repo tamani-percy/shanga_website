@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // @ts-nocheck
-import { ref, onMounted, onUnmounted, computed } from "vue";
-import { useRoute } from "vue-router"; // Import useRoute from Vue Router
+import {ref, onMounted, onUnmounted, computed} from "vue";
+import {useRoute} from "vue-router"; // Import useRoute from Vue Router
 import Menubar from "primevue/menubar";
-import { MyPreset } from "@/PrimevuePresets.ts";
+import {MyPreset} from "@/PrimevuePresets.ts";
 
 const primaryColor: any = MyPreset.semantic.primary[500];
 
@@ -86,7 +86,7 @@ const isActive = (itemRoute: string) => {
       <template #start>
         <a href="/" id="shanga_logo" class="mr-4">
           <!-- Adds margin-right for spacing -->
-          <img src="/svgs/shanga_logo.svg" alt="No logo" class="w-24" />
+          <img src="/svgs/shanga_logo.svg" alt="No logo" class="w-24"/>
         </a>
       </template>
 
@@ -103,8 +103,8 @@ const isActive = (itemRoute: string) => {
                 @mouseleave="removeClass"
                 :class="{ 'active-menu': isActive(item.route) }"
             >
-            <font-awesome-icon class="text-md fa-icon" :icon="item.icon" /> &nbsp;
-            <span>{{ item.label }}</span>
+              <font-awesome-icon class="text-md fa-icon" :icon="item.icon"/> &nbsp;
+              <span>{{ item.label }}</span>
             </a>
           </router-link>
         </div>

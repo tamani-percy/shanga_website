@@ -16,7 +16,7 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 const initialDeposit = ref(0);
 const contributions = ref(0);
 const contributionPeriod = ref('monthly');
-const duration = ref(1);
+const duration = ref(0);
 const annualReturn = ref(0);
 const futureBalance = ref(0);
 const chartKey = ref(0);
