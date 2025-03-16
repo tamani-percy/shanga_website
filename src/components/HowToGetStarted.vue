@@ -3,7 +3,9 @@
 
 <template>
   <Card v-motion-pop-visible :delay="300">
-    <template #title><h1 class="text-4xl font-extrabold text-center text-textColor">How to get started</h1></template>
+    <template #title>
+      <h1 class="text-4xl font-extrabold text-center text-textColor">How to get started</h1>
+    </template>
     <template #content>
       <div class="w-full flex-col">
 

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+//@ts-ignore
 import {onMounted, onUnmounted, ref, watch} from 'vue';
 import {Bar} from 'vue-chartjs';
 import {Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale} from 'chart.js';
@@ -145,7 +146,7 @@ onUnmounted(() => {
   <Card :style="{
     minHeight: showChart ? (isMobile ? 'fit-content' : 'fit-content') : (isMobile ? '950px' : '200px'),
     height: showChart ? 'auto' : (isMobile ? '600px' : '500px'),
-    backgroundColor: '#03807A',
+    backgroundColor: '#f4edea',
     borderRadius: 0,
     width: '100%',
     marginTop: '10px',
@@ -154,51 +155,51 @@ onUnmounted(() => {
   }">
 
     <template #content>
-      <h1 class="text-4xl font-bold text-center text-textColor">Returns Calculator</h1>
-      <p class="mt-3 text-center text-textColor">
+      <h1 class="text-4xl font-bold text-center ">Returns Calculator</h1>
+      <p class="mt-3 text-center pb-5">
         Check out our compound interest calculator to see just how much the power of time and compound interest can help
         your money grow.*
       </p>
-      <Divider/>
-      <div class="card flex-wrap flex mt-10 gap-x-4 lg:gap-y-0 gap-y-5 items-center justify-center">
+      <hr>
+      <div class="card flex-wrap flex mt-5 gap-x-4 lg:gap-y-0 gap-y-5 items-center justify-center">
         <div>
-          <label for="initialDeposit" class="block mb-1 text-textColor">Initial Deposit: &nbsp;</label>
+          <label for="initialDeposit" class="block mb-1 ">Initial Deposit: &nbsp;</label>
           <InputNumber id="initialDeposit" v-model="initialDeposit" name="initialDeposit" prefix="ZMW "
                        placeholder="ZMW"/>
         </div>
         <div>
-          <label for="annualReturn" class="block mb-1 text-textColor">Average Annual Return:&nbsp;</label>
+          <label for="annualReturn" class="block mb-1 ">Average Annual Return:&nbsp;</label>
           <InputNumber id="annualReturn" v-model="annualReturn" name="annualReturn" :min="0" :max="20" suffix="%"
                        placeholder="%"/>
         </div>
         <div>
-          <label for="contributions" class="block mb-1 text-textColor">Contributions:&nbsp;</label>
+          <label for="contributions" class="block mb-1 ">Contributions:&nbsp;</label>
           <InputNumber id="contributions" v-model="contributions" name="contributions" placeholder="ZMW" prefix="ZMW "
           />
         </div>
         <div>
-          <label for="initialDeposit" class="block text-textColor">Deposit frequency: &nbsp;</label>
+          <label for="initialDeposit" class="block ">Deposit frequency: &nbsp;</label>
           <RadioButtonGroup name="contributionPeriod" class="flex flex-col">
             <div class="flex flex-col justify-between mb-1">
-              <label class="text-textColor">
+              <label class="">
                 <RadioButton v-model="contributionPeriod" inputId="daily" value="daily"/>
                 Daily
               </label>
             </div>
             <div class="flex flex-col justify-between mb-1">
-              <label class="text-textColor">
+              <label class="">
                 <RadioButton v-model="contributionPeriod" inputId="weekly" value="weekly"/>
                 Weekly
               </label>
             </div>
             <div class="flex flex-col justify-between mb-1">
-              <label class="text-textColor">
+              <label class="">
                 <RadioButton v-model="contributionPeriod" inputId="monthly" value="monthly"/>
                 Monthly
               </label>
             </div>
             <div class="flex flex-col justify-between">
-              <label class="text-textColor">
+              <label class="">
                 <RadioButton v-model="contributionPeriod" inputId="yearly" value="yearly"/>
                 Yearly
               </label>
@@ -206,7 +207,7 @@ onUnmounted(() => {
           </RadioButtonGroup>
         </div>
         <div>
-          <label for="duration" class="block mb-1 text-textColor">Duration (Years)&nbsp;</label>
+          <label for="duration" class="block mb-1 ">Duration (Years)&nbsp;</label>
           <InputNumber id="duration" v-model="duration" :min="1" :max="100" name="duration" placeholder="0"
                        suffix=" Years"/>
         </div>
@@ -216,7 +217,7 @@ onUnmounted(() => {
         </div>
       </div>
       <div class="flex justify-center flex-col items-center">
-        <h1 class="text-md font-bold text-textColor text-2xl text-center my-7">
+        <h1 class="text-md font-bold  text-2xl text-center my-7">
           Potential Future Balance: &nbsp; <br>
           <span class="text-4xl font-bold border-dashed border-b" style="color: #171C1F">
             ZMW {{ futureBalance.toLocaleString() }}
@@ -232,7 +233,7 @@ onUnmounted(() => {
       </div>
     </template>
     <template #footer>
-      <div class="text-center text-sm text-textColor mt-5 p-4 flex justify-center">
+      <div class="text-center text-sm  mt-5 p-4 flex justify-center">
         <p class=" max-w-4xl">
           The chart shows an estimate of how much an investment could grow over time based on the initial deposit,
           contribution frequency, and interest rate specified. Changes in those variables can affect the
@@ -246,6 +247,9 @@ onUnmounted(() => {
 </template>
 
 <style>
+hr {
+  color:#343a40;
+}
 .card {
   transition: height 0.5s ease;
   width: 100%;

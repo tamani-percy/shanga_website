@@ -4,7 +4,8 @@ import LandingText from "@/components/Homepage/LandingText.vue";
 import HowItWorks from "@/components/HowItWorks.vue";
 import Safety from "@/components/Homepage/Safety.vue";
 import EstimatesCalculator from "@/components/Homepage/EstimatesCalculator.vue";
-
+import IPhoneMockup from "@/components/iPhoneMockup.vue";
+import SafariMockup from "@/components/SafariMockup.vue";
 </script>
 
 <template>
@@ -19,15 +20,31 @@ import EstimatesCalculator from "@/components/Homepage/EstimatesCalculator.vue";
     <div ref="gettingStartedContainer" class="w-full justify-center items-center flex flex-col">
       <how-to-get-started/>
     </div>
+    <div class="bg-[#03807A] w-full flex flex-col items-center pb-10">
+      <h1 class="text-4xl font-bold text-center text-textColor pt-10 pb-2">Launching soon 🚀</h1>
+      <p class="text-lg text-center text-textColor text-wrap lg:w-1/2">We will be launching our web dashboard and mobile application very
+        soon that will make equity development easy for the average consumer. We can't wait to share the new platform
+        with you. Stay tuned for more updates. </p>
+      <div class="relative flex w-full flex-col items-center justify-center p-8">
+        <i-phone-mockup src="/images/shanga_mobile.png" class="size-full lg:max-w-[350px]"/>
+
+      </div>
+
+      <div class="relative p-4">
+        <safari-mockup url="https://dash.shangaindex.com" src="/images/shanga_web.jpeg"
+                       class="size-full lg:max-w-[50vw]"/>
+      </div>
+    </div>
     <safety/>
+
   </div>
+  <hr>
 
 </template>
 
 <script lang="ts">
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-
 
 gsap.registerPlugin(ScrollTrigger);
 export default {
@@ -60,4 +77,7 @@ export default {
 </script>
 
 <style scoped>
+hr {
+  color:white;
+}
 </style>
