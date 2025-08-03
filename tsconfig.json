@@ -1,7 +1,9 @@
-//@ts-nocheck
 
 {
   "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "strict": false,

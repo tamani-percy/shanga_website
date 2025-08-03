@@ -1,9 +1,11 @@
 <script setup lang="ts">
 // @ts-nocheck
-import {ref, onMounted, onUnmounted, computed} from "vue";
-import {useRoute} from "vue-router"; // Import useRoute from Vue Router
+import {onMounted, onUnmounted, ref} from "vue";
+import {useRoute} from "vue-router";
+import Button from "primevue/button"
 import Menubar from "primevue/menubar";
 import {MyPreset} from "@/PrimevuePresets.ts";
+import router from "@/router";
 
 const primaryColor: any = MyPreset.semantic.primary[500];
 
@@ -76,22 +78,20 @@ const isActive = (itemRoute: string) => {
 
 <template>
   <div
-      class="flex justify-center w-full sticky parent_menubar transition-transform duration-300"
+      class="flex justify-center w-full sticky parent_menubar transition-transform duration-300 z-50"
       :class="{ 'hidden-navbar': !isNavbarVisible }"
   >
     <Menubar
         :model="items"
-        class="!backdrop-blur-sm bg-whiteBg shadow-sm flex justify-between items-center px-4"
     >
       <template #start>
         <a href="/" id="shanga_logo" class="mr-4">
           <!-- Adds margin-right for spacing -->
-          <img src="/svgs/shanga_logo.svg" alt="No logo" class="w-24"/>
+          <img src="/svgs/shanga_logo.svg" alt="No logo" class="w-20"/>
         </a>
       </template>
 
       <template #item="{ item, props }">
-        <div class="flex-1 flex justify-start lg:justify-center">
           <!-- Centers the items -->
           <router-link :to="item.route" v-slot="{ href, navigate }" custom>
             <a
@@ -107,26 +107,21 @@ const isActive = (itemRoute: string) => {
               <span>{{ item.label }}</span>
             </a>
           </router-link>
-        </div>
       </template>
 
       <template #end>
-        <div class="lg:ml-36 flex items-center">
-          <div class="border-r border hidden lg:inline-block"></div>
-          <router-link
-              :to="{ name: 'coming_soon' }"
-              id="navbar-login-btn"
-              class="font-medium px-4 py-2 text-sm text-center h-12 w-20 items-center flex justify-center hover:underline"
+        <div class="gap-4 flex items-center ">
+          <Button severity="secondary" size="small"
+              @click="router.push({ name: 'coming_soon' })"
           >
-            Log In
-          </router-link>
-          <router-link
-              :to="{ name: 'coming_soon' }"
-              class="rounded-full hover:shadow-lg font-medium text-sm px-4 py-2 text-center h-12 w-44 items-center content-center"
-              :style="{ background: primaryColor }"
+           <font-awesome-icon :icon="['fas','right-to-bracket']"/> Log In
+          </Button>
+          <Button
+              size="small"
+              @click="router.push({ name: 'coming_soon' })"
           >
-            <span class="text-textColor">Get Started</span>
-          </router-link>
+            <font-awesome-icon :icon="['fas','door-open']"/> Sign up
+          </Button>
         </div>
       </template>
     </Menubar>
@@ -134,22 +129,10 @@ const isActive = (itemRoute: string) => {
 </template>
 
 <style>
-.parent_menubar {
-  background-color: #f8fafc;
-  top: 0;
-  transition: transform 0.3s ease-in-out;
+.p-menubar {
   width: 100%;
   position: fixed !important;
   z-index: 1000 !important;
-}
-
-.hidden-navbar {
-  transform: translateY(-100%);
-}
-
-.active-menu {
-  font-weight: bold;
-  border-bottom: 2px solid v-bind('primaryColor');
 }
 
 @media screen and (min-width: 768px) {
@@ -158,4 +141,9 @@ const isActive = (itemRoute: string) => {
     padding-left: 40px !important;
   }
 }
+
+.notification-button {
+  position: relative;
+}
+
 </style>

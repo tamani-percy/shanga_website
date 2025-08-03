@@ -1,10 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
-import Homepage from "@/components/Homepage/Homepage.vue";
-import AppSkeleton from "@/views/AppSkeleton.vue";
-import ContactUs from "@/components/ContactUs/ContactUs.vue";
-import AboutUs from "@/components/AboutUs/AboutUs.vue";
-
 const router = createRouter({
     history: createWebHistory(),
     scrollBehavior() {

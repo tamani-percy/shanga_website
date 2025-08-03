@@ -1,26 +1,29 @@
 <template>
-  <div class="flex flex-col items-center min-h-screen bg-gray-100 lg:hidden">
+  <div class="flex flex-col items-center bg-gray-100 lg:hidden">
+    <div v-for="(card, index) in cards" :key="index" class="card w-full flex justify-center items-center">
+      <FlipCard class="h-[700px] w-full p-10">
+        <template #default>
+          <img
+              :src="card.image"
+              alt="image"
+              class="size-full rounded-2xl object-cover h-3/4 shadow-2xl shadow-black/40"
+          />
+          <div class="absolute bottom-4 left-4 font-bold ">
+            <h1 class="text-md text-white">{{ card.name }}</h1>
+            <p class="text-sm">{{ card.position }}</p>
+          </div>
+        </template>
+        <template #back>
+          <div class="flex min-h-full flex-col gap-2 items-center justify-center">
+            <p>{{ card.bio }}</p>
+          </div>
+        </template>
+      </FlipCard>
+    </div>
+
+    <!--    image, name, position, bio-->
+
     <div class="w-full max-w-sm space-y-4 py-20">
-      <div v-for="(card, index) in cards" :key="index" :ref="setCardRef" class="card">
-        <Card class="shadow-lg">
-          <template #header>
-            <img :src="card.image" alt="" class="team-pics w-fit rounded-lg">
-          </template>
-          <template #content>
-            <div class="flex w-full flex-col">
-              <div class="ms-4 flex flex-col self-center ">
-                <h1 class="font-bold text-2xl text-start">
-                  {{ card.name }}
-                </h1>
-                <h2 class="font-semibold text-xl text-start">
-                  {{ card.position }}
-                </h2>
-                <p class="text-md font-normal">{{ card.bio }} </p>
-              </div>
-            </div>
-          </template>
-        </Card>
-      </div>
     </div>
   </div>
   <div class="card overflow-x-auto mt-20 justify-center hidden lg:flex">
@@ -53,12 +56,10 @@
 </template>
 
 <script setup>
-import {ref, onMounted} from 'vue';
-import {gsap} from 'gsap';
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
-import Card from 'primevue/card';
+import {ref} from 'vue';
 import OrganizationChart from 'primevue/organizationchart';
 import Dialog from 'primevue/dialog';
+import FlipCard from "@/components/ui/flip-card/FlipCard.vue";
 
 const data = ref({
   key: '0',
@@ -170,6 +171,12 @@ const cards = ref([
     bio: "Chanda is a holder of a Bachelor of Science in Actuarial Science graduating with a Merit from the University of Lusaka with a passion for gaming, soccer, music, movies, series, and anime. Balancing academic pursuits with a love for math, Chanda is driven by the ambition to drive his American Muscle Ford Mustang GT around the town & Land Cruiser 79 series in the outback. Always curious and eager to learn, he brings enthusiasm and dedication to every endeavor, making the most of every opportunity to grow and succeed."
   },
   {
+    name: "Mumba Mwenda",
+    position: 'Legal and Compliance',
+    image: '/images/team/mumba.jpg',
+    bio: "Mumba Mwenda is a dedicated and ambitious lawyer with 2 years of experience in the legal profession. He holds a Bachelor of Laws (LL.B) degree from the University of Zambia. Mumba is passionate about delivering high-quality legal services, and has a strong commitment to seeing this company grow. Outside of work, he unwinds with a good glass of wine and his favorite Netflix shows. Mumba is a valuable asset to the company, bringing a unique perspective, and skill set that makes him a great addition to the team."
+  },
+  {
     name: "Tamani Banda",
     position: 'Chief Technology Officer',
     image: '/images/team/tee.jpg',
@@ -187,60 +194,11 @@ const cards = ref([
     image: '/images/team/mwams.jpg',
     bio: "Mwamba Chitalima is an eccentric and knowledge-hungry individual who creates bespoke applications that meet the present need of consumers. He has delved in an array of technologies, and has garnered satiable experience in the industry's requirements in that regard. His hobbies include playing video-games, watching sports, art, and coding. He holds a Bachelor of Science in Computer Science from the University of Zambia."
   },
-  {
-    name: "Mumba Mwenda",
-    position: 'Legal and Compliance',
-    image: '/images/team/mumba.jpg',
-    bio: "Mumba Mwenda is a dedicated and ambitious lawyer with 2 years of experience in the legal profession. He holds a Bachelor of Laws (LL.B) degree from the University of Zambia. Mumba is passionate about delivering high-quality legal services, and has a strong commitment to seeing this company grow. Outside of work, he unwinds with a good glass of wine and his favorite Netflix shows. Mumba is a valuable asset to the company, bringing a unique perspective, and skill set that makes him a great addition to the team."
-  }
+
 ]);
 
-// Refs for card elements
-const cardRefs = ref([]);
-const setCardRef = (el) => {
-  if (el) {
-    cardRefs.value.push(el);
-  }
-};
 
-// GSAP animations
-onMounted(() => {
-  gsap.registerPlugin(ScrollTrigger);
-
-  cardRefs.value.forEach((card, index) => {
-    // Initial animation: fade in and move up
-    gsap.from(card, {
-      y: 100, // Start slightly below
-      opacity: 0,
-      duration: 0.5,
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 95%', // When the top of the card hits 95% of the viewport
-        end: 'top 5%', // When the top of the card hits 5% of the viewport
-        scrub: true, // Smoothly animate on scroll
-      },
-    });
-
-    // Stacking effect: Move cards up as you scroll
-    gsap.to(card, {
-      y: -index * 20, // Adjust the stacking distance
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 95%',
-        end: 'bottom 5%',
-        scrub: true,
-      },
-    });
-  });
-});
 </script>
 
 <style scoped>
-.p-card {
-  height: fit-content;
-}
-
-.card {
-  transition: transform 0.3s ease;
-}
 </style>

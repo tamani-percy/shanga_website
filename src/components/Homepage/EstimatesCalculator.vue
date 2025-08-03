@@ -2,12 +2,11 @@
 //@ts-ignore
 import {onMounted, onUnmounted, ref, watch} from 'vue';
 import {Bar} from 'vue-chartjs';
-import {Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale} from 'chart.js';
+import {BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip} from 'chart.js';
 import InputNumber from 'primevue/inputnumber';
 import RadioButton from 'primevue/radiobutton';
 import Card from 'primevue/card';
 import Button from 'primevue/button';
-import Divider from 'primevue/divider';
 import ProgressSpinner from 'primevue/progressspinner';
 import RadioButtonGroup from 'primevue/radiobuttongroup';
 // @ts-ignore
