@@ -4,11 +4,12 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-center pb-10" :style="{backgroundColor:'#F4EDEA'}">
+  <div class="w-full flex flex-col justify-center pb-10 px-10 md:px-10" :style="{backgroundColor:'#F4EDEA'}">
     <div class="flex flex-col justify-center items-center pb-10">
       <h1 class="text-4xl font-bold pt-10 text-center pb-2 inline-flex items-center">Your money is safe with us
-        <img src="@/assets/gif/shield.gif" alt="" class="w-20">
+        <img src="@/assets/gif/shield.gif" alt="" class="w-20 hidden md:flex">
       </h1>
+      <img src="@/assets/gif/shield.gif" alt="" class="w-20 lg:hidden">
       <p class="text-lg text-center p-3 ">We are committed to ensuring your investment reaches its full tenure by
         providing
         the most secure standards
