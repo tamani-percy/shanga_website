@@ -29,8 +29,8 @@
 <template>
   <div class="flex flex-col items-center justify-center my-20">
     <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLScP1CYh21wR9JrqQXuTXpMrM2a3rJ7qtjPiRgoHA9xHMtbfCA/viewform?embedded=true"
-        width="640" height="919" frameborder="0" marginheight="0" marginwidth="0">Loading…
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfmXwcf8OZSxc_CzmdKUzoeF0yKKizx2Qh1eJ8V4S2Cp1EjTA/viewform?embedded=true"
+        width="640" height="969" frameborder="0" marginheight="0" marginwidth="0">Loading…
     </iframe>
   </div>
 </template>
