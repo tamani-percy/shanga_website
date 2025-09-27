@@ -24,7 +24,7 @@ const router = createRouter({
                 {
                     path: '/coming_soon',
                     name: 'coming_soon',
-                    component: () => import("@/components/DashboardComingSoon.vue"),
+                    component: () => import("@/components/ComingSoon/DashboardComingSoon.vue"),
                 },
                 {
                     path: '/updates',
