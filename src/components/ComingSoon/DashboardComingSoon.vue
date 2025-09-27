@@ -30,11 +30,15 @@
   <div class="flex flex-col items-center justify-center my-20">
     <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLSfmXwcf8OZSxc_CzmdKUzoeF0yKKizx2Qh1eJ8V4S2Cp1EjTA/viewform?embedded=true"
-        width="640" height="969" frameborder="0" marginheight="0" marginwidth="0">Loading…
+        class="w-full h-[700px] sm:w-[500px] sm:h-[800px] md:w-[640px] md:h-[969px] lg:w-[768px] lg:h-[1000px] xl:w-[900px] xl:h-[1100px]"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+    >
+      Loading…
     </iframe>
   </div>
 </template>
 
 <style scoped>
-
 </style>
