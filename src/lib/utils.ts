@@ -1,3 +1,4 @@
+// @ts-ignore
 import type { Updater } from "@tanstack/vue-table"
 import type { ClassValue } from "clsx"
 import type { Ref } from "vue"
