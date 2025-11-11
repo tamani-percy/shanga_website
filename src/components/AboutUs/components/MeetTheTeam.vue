@@ -66,7 +66,7 @@ const data = ref({
   type: 'person',
   styleClass: '!bg-purple-100 text-white rounded-xl',
   data: {
-    image: '/images/team/david_k.jpg',
+    image: '/images/team/david_k.png',
     name: 'David Kapindula',
     title: 'CEO',
     bio: "David Kapindula has a passion for finance and technology. With a keen analytical mind and a forward-thinking approach, he is dedicated to leveraging these skills to drive innovative investment strategies. He holds a Bachelor's Degree in Actuarial Science from the University of Lusaka. Outside of work, he enjoys playing chess, video-games, and reading. He believes in the immense potential of our country's market and is committed to fostering growth and prosperity through smart and strategic investing."
@@ -88,7 +88,7 @@ const data = ref({
       type: 'person',
       styleClass: '!bg-purple-100 text-white rounded-xl',
       data: {
-        image: '/images/team/david_c.jpg',
+        image: '/images/team/chanda.png',
         name: "Chanda Chandang'oma",
         title: 'CFO',
         bio: "Chanda is a dynamic student with a passion for gaming, soccer, music, movies, series, and anime. Balancing academic pursuits with a love for math, Chanda is driven by the ambition to drive his American Muscle Ford Mustang GT around the town. Always curious and eager to learn, he brings enthusiasm and dedication to every endeavor, making the most of every opportunity to grow and succeed."
@@ -99,7 +99,7 @@ const data = ref({
       type: 'person',
       styleClass: '!bg-purple-100 text-white rounded-xl',
       data: {
-        image: '/images/team/tee.jpg',
+        image: '/images/team/tee.png',
         name: 'Tamani Banda',
         title: 'CTO',
         bio: "Tamani Banda is a young and exuberant individual who sees the far-reaching potential technology has in the Zambian environment. He believes cooperation and drive is necessary to actualise what one individual feels is too much. His hobbies are anything and everything he can put his hands on; gaming, DIY, knitting, and coding just to name a few. He holds a Bachelor of Science in Computer Science from the University of Zambia."
@@ -154,7 +154,7 @@ const cards = ref([
   {
     name: 'David Kapindula',
     position: 'Chief Executive Officer',
-    image: '/images/team/david_k.jpg',
+    image: '/images/team/david_k.png',
     bio: "David Kapindula has a passion for finance and technology. With a keen analytical mind and a forward-thinking approach, he is dedicated to leveraging these skills to drive innovative investment strategies. He holds a Bachelor's Degree in Actuarial Science from the University of Lusaka. Outside of work, he enjoys playing chess, video-games, and reading. He believes in the immense potential of our country's market and is committed to fostering growth and prosperity through smart and strategic investing."
   },
   {
@@ -167,7 +167,7 @@ const cards = ref([
   {
     name: "Chanda Chandang'oma",
     position: 'Chief Financial Officer',
-    image: '/images/team/david_c.jpg',
+    image: '/images/team/chanda.png',
     bio: "Chanda is a holder of a Bachelor of Science in Actuarial Science graduating with a Merit from the University of Lusaka with a passion for gaming, soccer, music, movies, series, and anime. Balancing academic pursuits with a love for math, Chanda is driven by the ambition to drive his American Muscle Ford Mustang GT around the town & Land Cruiser 79 series in the outback. Always curious and eager to learn, he brings enthusiasm and dedication to every endeavor, making the most of every opportunity to grow and succeed."
   },
   {
@@ -179,7 +179,7 @@ const cards = ref([
   {
     name: "Tamani Banda",
     position: 'Chief Technology Officer',
-    image: '/images/team/tee.jpg',
+    image: '/images/team/tee.png',
     bio: "Tamani Banda is a young and exuberant individual who sees the far-reaching potential technology has in the Zambian environment. He believes cooperation and drive is necessary to actualise what one individual feels is too much. His hobbies are anything and everything he can put his hands on; gaming, DIY, knitting, and coding just to name a few. He holds a Bachelor of Science in Computer Science from the University of Zambia."
   },
   {

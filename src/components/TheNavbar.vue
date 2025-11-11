@@ -22,6 +22,11 @@ const items: any = ref([
     route: "/about_us",
   },
   {
+    label: "Blog",
+    icon: ["fas", "blog"],
+    route: "/blog",
+  },
+  {
     label: "Contact Us",
     icon: ["fas", "phone"],
     route: "/contact_us",

@@ -27,9 +27,14 @@ const router = createRouter({
                     component: () => import("@/components/ComingSoon/DashboardComingSoon.vue"),
                 },
                 {
+                    path: '/blog',
+                    name: 'blog',
+                    component: () => import("@/components/Blog/Blog.vue"),
+                },
+                {
                     path: '/updates',
                     name: 'updates',
-                    component: () => import("@/components/Updates.vue"),
+                    component: () => import("@/components/Updates/Updates.vue"),
                 },
                 {
                     path: '/:pathMatch(.*)*',

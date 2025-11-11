@@ -19,6 +19,8 @@ const contributionPeriod = ref('monthly');
 const duration = ref(0);
 const annualReturn = ref(0);
 const futureBalance = ref(0);
+const totalContributions = ref(0);
+const totalEarnings = ref(0);
 const chartKey = ref(0);
 const isLoading = ref(false);
 const showChart = ref(false);
@@ -27,7 +29,7 @@ const chartData = ref({
   labels: [] as string[],
   datasets: [
     {
-      label: 'Investment',
+      label: 'Total Contributions',
       data: [] as number[],
       backgroundColor: '#343a40',
       borderColor: '#343a40',
@@ -35,7 +37,7 @@ const chartData = ref({
       fill: false,
     },
     {
-      label: 'Return',
+      label: 'Total Earnings',
       data: [] as number[],
       backgroundColor: '#05b3a0',
       borderColor: '#05b3a0',
@@ -76,6 +78,7 @@ watch(annualReturn, (newValue) => {
 });
 
 // @ts-ignore
+// @ts-ignore
 const calculateInvestment = async () => {
   if (annualReturn.value > 20) {
     annualReturn.value = 20;
@@ -84,37 +87,44 @@ const calculateInvestment = async () => {
   isLoading.value = true;
   showChart.value = false;
 
-  // Simulate a delay to allow the UI to update
   await new Promise(resolve => setTimeout(resolve, 100));
 
-  const periodsPerYear: any = {daily: 365, weekly: 52, monthly: 12, yearly: 1};
+  const periodsPerYear: Record<string, number> = {daily: 365, weekly: 52, monthly: 12, yearly: 1};
   const contributionPeriodValue = periodsPerYear[contributionPeriod.value];
   const ratePerPeriod = annualReturn.value / 100 / contributionPeriodValue;
 
   let balance = initialDeposit.value;
-  const labels = [];
-  const investmentData = [];
-  const returnData = [];
+  const labels: string[] = [];
+  const investmentData: number[] = [];
+  const returnData: number[] = [];
+  let totalContrib = initialDeposit.value;
+  let totalReturn = 0;
   let currentYear = new Date().getFullYear();
 
   for (let i = 1; i <= duration.value; i++) {
-    let yearlyBalance = balance;
-    let yearlyInvestment = initialDeposit.value;
+    let yearlyInvestment = 0;
     let yearlyReturn = 0;
 
     for (let j = 1; j <= contributionPeriodValue; j++) {
-      yearlyReturn += yearlyBalance * ratePerPeriod;
-      yearlyBalance += contributions.value + yearlyBalance * ratePerPeriod;
+      balance += contributions.value;
+      yearlyInvestment += contributions.value;
+      const interest = balance * ratePerPeriod;
+      balance += interest;
+      yearlyReturn += interest;
     }
 
     labels.push((currentYear + i - 1).toString());
-    investmentData.push(yearlyInvestment);
+    investmentData.push(parseFloat(yearlyInvestment.toFixed(2)));
     returnData.push(parseFloat(yearlyReturn.toFixed(2)));
 
-    balance = yearlyBalance;
+    totalContrib += yearlyInvestment;
+    totalReturn += yearlyReturn;
   }
 
+  totalContributions.value = parseFloat(totalContrib.toFixed(2));
+  totalEarnings.value = parseFloat(totalReturn.toFixed(2));
   futureBalance.value = parseFloat(balance.toFixed(2));
+
   chartData.value.labels = labels;
   chartData.value.datasets[0].data = investmentData;
   chartData.value.datasets[1].data = returnData;
@@ -124,7 +134,8 @@ const calculateInvestment = async () => {
   showChart.value = true;
 
   document.getElementById('chart-container')?.scrollIntoView({behavior: 'smooth'});
-}
+};
+
 const isMobile = ref(false);
 
 const checkIfMobile = () => {
@@ -172,7 +183,7 @@ onUnmounted(() => {
                        placeholder="%"/>
         </div>
         <div>
-          <label for="contributions" class="block mb-1 ">Contributions:&nbsp;</label>
+          <label for="contributions" class="block mb-1 ">Regular Contributions:&nbsp;</label>
           <InputNumber id="contributions" v-model="contributions" name="contributions" placeholder="ZMW" prefix="ZMW "
           />
         </div>
@@ -216,12 +227,30 @@ onUnmounted(() => {
         </div>
       </div>
       <div class="flex justify-center flex-col items-center">
-        <h1 class="text-md font-bold  text-2xl text-center my-7">
-          Potential Future Balance: &nbsp; <br>
-          <span class="text-4xl font-bold border-dashed border-b" style="color: #171C1F">
-            ZMW {{ futureBalance.toLocaleString() }}
-          </span>
-        </h1>
+        <div class="text-center my-7">
+          <h2 class="text-2xl font-bold mb-2">Investment Summary</h2>
+          <div class="flex flex-col lg:flex-row gap-6 justify-center">
+            <div>
+              <h3 class="font-semibold text-lg">Total Contributions</h3>
+              <p class="text-3xl font-bold" style="color:#343a40">
+                ZMW {{ totalContributions.toLocaleString() }}
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">Total Earnings</h3>
+              <p class="text-3xl font-bold" style="color:#05b3a0">
+                ZMW {{ totalEarnings.toLocaleString() }}
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">Future Balance</h3>
+              <p class="text-3xl font-bold border-dashed border-b" style="color:#171C1F">
+                ZMW {{ futureBalance.toLocaleString() }}
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div class="loader-container" v-if="isLoading">
           <ProgressSpinner style="width: 50px; height: 50px" strokeWidth="3" fill="#343a40" animationDuration=".5s"/>
         </div>
@@ -231,7 +260,7 @@ onUnmounted(() => {
         </div>
       </div>
     </template>
-    <template #footer>
+    <template #footer v-if="showChart">
       <div class="text-center text-sm  mt-5 p-4 flex justify-center">
         <p class=" max-w-4xl">
           The chart shows an estimate of how much an investment could grow over time based on the initial deposit,
@@ -247,8 +276,9 @@ onUnmounted(() => {
 
 <style>
 hr {
-  color:#343a40;
+  color: #343a40;
 }
+
 .card {
   transition: height 0.5s ease;
   width: 100%;

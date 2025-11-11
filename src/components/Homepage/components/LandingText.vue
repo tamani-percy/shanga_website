@@ -18,9 +18,18 @@
           <FlipWords
               :words="['Demystifying Investments...', 'Investing, without the jargon...', 'Your financial journey, simplified...', 'Versatile']"
               :duration="3000"
-              class="flex justify-center text-wrap text-xl md:text-4xl !text-primary"
+              class="flex justify-center text-wrap text-2xl !text-primary"
           />
         </div>
+        <h1 class="mt-10 font-bold text-4xl">Grow your wealth with confidence</h1>
+        <h1 class="mt-10 text-2xl">Investing across Africa has never been easier. Let us show you how.</h1>
+        <Button class="mt-10"
+            size="large"
+            @click="router.push({ name: 'coming_soon' })"
+        >
+          Get Started
+          <font-awesome-icon :icon="['fas','arrow-right']"/>
+        </Button>
       </div>
     </PatternBackground>
 
@@ -35,11 +44,11 @@ import {
   PATTERN_BACKGROUND_DIRECTION,
   PATTERN_BACKGROUND_SPEED,
   PATTERN_BACKGROUND_VARIANT
-// @ts-ignore
 } from "@/components/ui/pattern-background";
 import FlipWords from "@/components/ui/flip-words/FlipWords.vue";
 import SparklesText from "@/components/ui/sparkles-text/SparklesText.vue";
-
+import Button from "primevue/button"
+import router from "@/router";
 </script>
 
 <style scoped>

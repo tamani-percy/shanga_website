@@ -53,18 +53,20 @@ const primaryColor = MyPreset.semantic.primary[200]
       </div>
     </div>
     <div class="flex justify-between text-center mt-3 flex-col flex-wrap text-wrap p-3 lg:p-0">
-      <p class="text-sm text-left">Fundalytics Technologies Limited ("Shanga") is a company duly licensed by the
-        Securities and
-        Exchange Commission,
-        Zambia. Shanga does not provide investment advice and individual investors should make their own decisions to
-        seek
-        independent advice. The value of investments can go up as well as down and you may receive back less than your
-        original investment. </p>
+<!--      <p class="text-sm text-left">Fundalytics Technologies Limited ("Shanga") is a company duly licensed by the-->
+<!--        Securities and-->
+<!--        Exchange Commission,-->
+<!--        Zambia. Shanga does not provide investment advice and individual investors should make their own decisions to-->
+<!--        seek-->
+<!--        independent advice. The value of investments can go up as well as down and you may receive back less than your-->
+<!--        original investment. </p>-->
       <p class="text-sm text-left mt-10 mb-20">&copy; Copyright <span class="font-bold">2025</span> - Fundalytics
-        Technologies Limited. All rights reserved. <br> Fundalytics
-        Technologies Limited is licensed by the Ministry
-        of Finance Zambia and authorised by
-        the Securities Exchange Commission of Zambia.</p>
+        Technologies Limited. All rights reserved.
+<!--        <br> Fundalytics-->
+<!--        Technologies Limited is licensed by the Ministry-->
+<!--        of Finance Zambia and authorised by-->
+<!--        the Securities Exchange Commission of Zambia.-->
+      </p>
     </div>
   </div>
 </template>
